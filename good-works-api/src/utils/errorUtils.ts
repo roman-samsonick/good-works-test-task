@@ -1,0 +1,19 @@
+import { HttpException, HttpStatus } from '@nestjs/common';
+
+export enum EAppError {
+  USER_ALREADY_EXISTS = 'USER_ALREADY_EXISTS',
+  INVALID_CREDENTIALS = 'INVALID_CREDENTIALS',
+  INVALID_TOKEN = 'INVALID_TOKEN',
+  UNAUTHORIZED = 'UNAUTHORIZED',
+  FRIENDSHIP_NOT_EXIST = 'FRIENDSHIP_NOT_EXIST',
+  NO_FRIENDSHIP_BETWEEN_USERS = 'NO_FRIENDSHIP_BETWEEN_USERS',
+  FRIENDSHIP_ALREADY_EXIST = 'FRIENDSHIP_ALREADY_EXIST',
+  USER_NOT_EXIST = 'USER_NOT_EXIST',
+  ACTION_NOT_EXIST = 'ACTION_NOT_EXIST',
+}
+
+export class AppError extends HttpException {
+  constructor(type: EAppError) {
+    super({ error: true, type }, HttpStatus.BAD_REQUEST);
+  }
+}
